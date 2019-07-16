@@ -2,6 +2,7 @@ import logging
 
 logfile = 'example.log'
 log_level = logging.INFO
+log_to_console = True
 
 logger = logging.getLogger('App_name')
 logger.setLevel(log_level)
@@ -16,7 +17,8 @@ file_handler.setFormatter(formatter)
 stream_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
-logger.addHandler(stream_handler)
+if log_to_console:
+    logger.addHandler(stream_handler)
 
 
 logger.info('example info message')
